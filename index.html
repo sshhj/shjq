@@ -1,0 +1,346 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>AI Writing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .hero {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 50px;
+        }
+
+        .card:hover .card-img-top {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+        }
+
+        .click-bar {
+        display: none;
+        margin-top: 10px;
+        text-align: center;
+        }
+
+        .click-bar button {
+        margin-right: 5px;
+        }
+
+        .card:hover + .click-bar {
+        display: block;
+        }
+
+        .click-bar:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+        }
+
+        #poem-content {
+        display: none;
+        margin-top: 20px;
+        }
+    </style>
+    </head>
+    <body>
+    <div class="hero">
+        <h1>AI Writing</h1>
+        <h2>100% ChatGPT 창작물</h2>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+            <div class="col-md-4">
+                <div class="card" onclick="togglePoemButtons()">
+                <img src="https://source.unsplash.com/1600x900/?nature" alt="Poem" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Poem</h5>
+                    <p class="card-text"></p>
+                </div>
+                </div>
+                <div class="click-bar poem-buttons">
+                <button class="btn btn-primary" onclick="showPoem('인생')">인생</button>
+                <button class="btn btn-primary" onclick="showPoem('사랑')">사랑</button>
+                <button class="btn btn-primary" onclick="showPoem('삶과 죽음')">삶과 죽음</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" onclick="toggleNovelButtons()">
+                <img src="https://source.unsplash.com/1600x900/?book" alt="Novel" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Novel</h5>
+                    <p class="card-text"></p>
+                </div>
+                </div>
+                <div class="click-bar novel-buttons">
+                <button class="btn btn-primary" onclick="showNovel('인생')">인생</button>
+                <button class="btn btn-primary" onclick="showNovel('사랑')">사랑</button>
+                <button class="btn btn-primary" onclick="showNovel('삶과 죽음')">삶과 죽음</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" onclick="toggleArticleButtons()">
+                <img src="https://source.unsplash.com/1600x900/?newspaper" alt="Article" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Article</h5>
+                    <p class="card-text"></p>
+                </div>
+                </div>
+                <div class="click-bar article-buttons">
+                <button class="btn btn-primary" onclick="showArticle('정치')">정치</button>
+                <button class="btn btn-primary" onclick="showArticle('문화')">문화</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+            <div id="poem-content">
+                <h3 id="poem-title">무제</h3>
+                <p id="poem-text">고달픈 인생의 길은 천천히 펼쳐져<br>관문마다 시련과 고통이 기다리는 곳<br>때로는 산이 갈라진 듯한 언덕 너머<br>때로는 파도가 부딪치는 바다의 험한 돌들 사이<br><br>한 발 내딛을 때마다 피로와 지침이 느껴지지만<br>아직도 앞으로 나아가야만 하는 것 같아<br>고통의 수련이 나를 성장시키는 도구이듯<br>고난과 역경이 내 인생의 가르침이 되는 거야<br><br>모든 것이 쉽게 이루어지는 순간은 없어<br>비온 뒤 무지개가 떠오르듯이<br>인생의 힘든 시간을 이겨내면<br>새로운 희망과 기회가 찾아오는 법<br><br>내게 펼쳐진 인생의 이야기는<br>고난의 형태를 띄고 있지만<br>나는 앞으로 나아가고자 하는 열정과 의지로 가득해<br>고통은 나를 강하게 만들어주는 보물<br><br>고달픈 인생의 길은 거칠기도 하지만<br>그 속에서 무엇인가를 찾을 수 있다는 것을 알아<br>그리고 나 자신을 믿고 다가서면<br>힘들게 시작한 이 여정은 아름다움으로 가득한 세상으로 이어질 것이다.</p>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePoemButtons() {
+        var buttons = document.getElementsByClassName('poem-buttons')[0];
+        buttons.style.display = buttons.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function showPoem(category) {
+    var content = document.getElementById('poem-content');
+    content.style.display = 'block';
+    var poemTitle = document.getElementById('poem-title');
+    var poemText = document.getElementById('poem-text');
+    
+    if (category === '사랑') {
+        var newWindow = window.open('about:blank');
+        newWindow.document.write(`
+        <html>
+        <head>
+            <title>사랑의 노래</title>
+        </head>
+        <body>
+            <h3>사랑의 노래</h3>
+            <p>사랑은 빛나는 춤이다. 마주한 눈빛이 어울리며 마음이 점점 가까워진다.</p>
+            <p>작은 손길 하나로도 따뜻함을 전하고 공감한다. 서로의 곁에서 행복이 피어난다.</p>
+            <p>사랑은 순간의 미소다. 작고 소중한 순간들이 쌓여 영원한 아름다움을 남긴다.</p>
+        </body>
+        </html>
+        `);
+        newWindow.document.close();
+        return;
+    } else if (category === '삶과 죽음') {
+        var newWindow = window.open('about:blank');
+        newWindow.document.write(`
+        <html>
+        <head>
+            <title>삶의 노래</title>
+        </head>
+        <body>
+            <h3>삶의 노래</h3>
+            <p>어둠이 깊게 잠들었던 밤 하나둘 새벽의 빛이 찾아왔어</p>
+            <p>눈을 떴을 때, 나를 감싸는 이 세상</p>
+            <p>느껴지는 건 희망의 미소</p>
+            <p>삶은 물결처럼 번져가고</p>
+            <p>시간은 스쳐지나가네</p>
+            <p>가끔은 무너져 보일 때도 있지만</p>
+            <p>나는 앞으로 나아가는 용기를 갖고</p>
+            <p>어릴 적의 꿈이 아직도 가슴에 살아</p>
+            <p>지금이야 말로 내가 날아올라가는 시간</p>
+            <p>어려움 속에 숨겨진 의미를 찾아</p>
+            <p>나는 삶의 노래를 부르네</p>
+            <p>죽음이란 걱정하며 살지 않아도 돼</p>
+            <p>이 순간 속에 담긴 아름다움을 느껴</p>
+            <p>너무나 짧은 이 인생 속에서</p>
+            <p>내가 존재했던 흔적을 남기고 떠나가네</p>
+            <p>죽음의 그늘은 언젠가 찾아올지 몰라도</p>
+            <p>난 지금 이 순간을 살아가고 싶어</p>
+            <p>한 줄기 빛처럼 마음 속에 피어난 희망을 가지고</p>
+        </body>
+        </html>
+        `);
+        newWindow.document.close();
+        return;
+    } else if (category === '인생') {
+        var newWindow = window.open('about:blank');
+        newWindow.document.write(`
+        <html>
+        <head>
+            <title>인생의 노래</title>
+        </head>
+        <body>
+            <h3>인생의 노래</h3>
+            <p>인생은 여행이다. 우리는 길을 따라 걷고, 새로운 장소를 발견한다.</p>
+            <p>어떤 순간은 어렵고 힘들기도 하지만, 그곳에서 배우고 성장한다.</p>
+            <p>산과 강, 들과 도시를 지나며 우리는 삶의 아름다움을 느낀다.</p>
+            <p>행복과 슬픔, 성공과 실패를 맞이하면서 우리는 삶을 살아간다.</p>
+            <p>인생은 끊임없는 도전과 발견이다. 우리는 앞으로 나아가며 새로운 꿈을 꿀 수 있다.</p>
+            <p>인생의 노래를 부르며 우리는 세상을 만들어간다.</p>
+        </body>
+        </html>
+        `);
+        newWindow.document.close();
+        return;
+    }
+    
+    poemTitle.innerHTML = '';
+    poemText.innerHTML = '';
+    }
+
+
+
+
+        function toggleNovelButtons() {
+        var buttons = document.getElementsByClassName('novel-buttons')[0];
+        buttons.style.display = buttons.style.display === 'none' ? 'block' : 'none';
+        }
+    function showNovel(category) {
+    var novelContent = window.open('', '_blank');
+    switch (category) {
+        case '인생':
+        novelContent.document.write('<h1>비상 (Emergency)</h1>');
+        novelContent.document.write('<h2>줄거리:</h2>');
+        novelContent.document.write('<p>"비상"은 현대 사회에서 벌어지는 긴장과 위기의 상황에서 인간의 강인함과 희생을 탐구하는 소설입니다.</p>');
+        novelContent.document.write('<p>주인공은 김현우라는 이름의 소방관입니다. 그는 전문적인 훈련과 경험으로 무장한 모습으로 화재, 재난, 사고 현장에서 일하는 일련의 모험을 겪게 됩니다. 그가 마주하는 상황은 생사의 경계에 있는 사람들, 절망과 희망이 공존하는 순간들로 가득차 있습니다.</p>');
+        novelContent.document.write('<p>이 소설은 김현우의 여정을 통해 인간의 강인함과 투지를 탐구합니다. 깊은 인간 본성과 동료애, 인류에 대한 믿음이 어떻게 이런 위험과 비극의 상황에서 발현되는지를 보여줍니다. 또한, 그의 가족과 사랑하는 이들과의 관계, 그리고 그들이 직면하는 위험과 고난을 통해 인간적인 연결과 희생의 놀라운 힘을 탐구합니다.</p>');
+        novelContent.document.write('<h2>작품 소개:</h2>');
+        novelContent.document.write('<p>"비상"은 긴장감 넘치는 전개와 현실적인 상황 설정, 사실적인 인물 묘사로 구성된 소설입니다. 독자들은 김현우와 그의 동료들의 고난과 열정을 공감하며 그들의 모험에 몰입할 것입니다. 이 소설은 사람들의 힘과 용기에 대한 경외심을 일깨워주며, 삶의 가치와 우리 주변에 있는 용맹한 영웅들을 존경하게 만들 것입니다.</p>');
+        novelContent.document.write('<p>"비상"은 독자들에게 현대 사회의 비상한 순간을 다룬 흥미진진한 이야기를 제공합니다. 그리고 삶의 가치, 투지, 용기, 그리고 희생에 대한 탐구를 통해 깊이 생각하게 하고 영감을 주는 작품입니다.</p>');
+        break;
+        case '사랑':
+        novelContent.document.write('<h1>사랑의 장미 (The Rose of Love)</h1>');
+        novelContent.document.write('<h2>줄거리:</h2>');
+        novelContent.document.write('<p>지구는 사랑이 사라진 고대 전설의 대지로 변했다. 이야기에 의하면, 사랑의 힘을 가진 장미의 꽃 한 송이가 땅에 심어지면 모든 사람들의 마음은 한결같이 사랑과 행복으로 가득 차게 된다고 전해진다. 하지만 이 전설은 시대를 거듭할수록 잊혀져가고, 사람들은 냉정하고 무관심한 세계에서 살아간다.</p>');
+        novelContent.document.write('<p>이야기의 주인공은 레아입니다. 레아는 사이버 보안 전문가로, 어릴 적부터 사랑이 사라진 후로 사랑을 이해하지 못하는 사회에서 자라왔습니다. 하지만 그녀는 사랑의 장미의 씨앗을 발견하면서 삶의 의미와 사랑의 힘에 대한 새로운 깨달음을 얻게 됩니다.</p>');
+        novelContent.document.write('<h2>장소:</h2>');
+        novelContent.document.write('<p>이 이야기는 미래의 도시인 네오시티에서 벌어집니다. 네오시티는 첨단 기술과 사이버 공간의 결합으로 이루어진 현대적인 도시입니다. 사람들은 가상 현실로 탈출하며 감정을 완전히 차단하는 경향이 있습니다. 네오시티는 차가운 감정의 도시로서 레아에게 도전적인 환경을 제공합니다.</p>');
+        novelContent.document.write('<h2>등장인물:</h2>');
+        novelContent.document.write('<p>레아 (주인공) - 사이버 보안 전문가로서, 어릴 적부터 사랑을 이해하지 못하는 사회에서 자란 청년입니다. 사랑의 장미의 씨앗을 발견하면서 자신의 가치관을 돌아보고, 사랑의 힘을 발견하게 됩니다.</p>');
+        novelContent.document.write('<p>하린 - 레아의 친구이자 동료로, 용감하고 충실한 사이버 해커입니다. 레아와 함께 사랑의 장미를 찾는 여정에 동참합니다.</p>');
+        novelContent.document.write('<p>엔조 - 네오시티의 권력을 가진 인물로, 사랑의 장미에 대한 비밀을 숨기고 조종하는 악당입니다. 레아와 하린은 엔조와의 대립을 경험하면서 사랑을 되찾는 여정에서 싸움을 벌이게 됩니다.</p>');
+        novelContent.document.write('<h2>사건:</h2>');
+        novelContent.document.write('<p>레아는 사이버 보안 전문가로서 엔조가 이끄는 사이버 마피아와의 전쟁 중에 사랑의 장미의 씨앗을 우연히 발견합니다. 이를 통해 레아는 사랑에 대한 새로운 이해를 얻고, 엔조의 비밀과 사랑의 힘을 알아가게 됩니다. 레아와 하린은 네오시티의 지하 도시에서 사랑의 장미를 찾기 위해 위험천만한 임무에 도전하면서, 사랑의 힘을 되찾기 위한 여정을 떠나게 됩니다. 이 여정에서 레아는 자신의 과거와 마주하고, 사랑과 용기를 발견하며 자신의 마음을 다시 찾아가는데 큰 도움을 받게 됩니다.</p>');
+        novelContent.document.write('<p>"사랑의 장미"는 사랑과 용기, 그리고 세상을 변화시키는 힘에 대한 감동적인 이야기입니다. 이 소설은 독자들에게 사랑의 힘을 재조명하고, 모두가 행복과 연민을 경험할 수 있는 가능성을 깨닫게 합니다. 이 책은 사랑을 바라는 모든 이에게 위로와 용기를 전해줄 것입니다.</p>');
+        break;
+        break;
+        case '삶과 죽음':
+        novelContent.document.write('<h1>제목: "생사" (Life and Death)</h1>');
+        novelContent.document.write('<h2>줄거리:</h2>');
+        novelContent.document.write('<p>"생사"는 존재의 극한 상태인 생과 사의 경계에서 벌어지는 감동적인 이야기입니다.</p>');
+        novelContent.document.write('<h2>배경:</h2>');
+        novelContent.document.write('<p>이야기는 현대 도시인 세도시에서 시작됩니다. 세도시는 현대화된 도시의 모습과 동시에 어둠과 미스터리로 가득한 곳입니다. 그리고 주인공은 이 도시의 한 측면에서 탐험을 시작하게 됩니다. 이후 이야기는 초월적인 세계로 전환되어 영적인 신비로운 장소들을 탐험하면서 전개됩니다.</p>');
+        novelContent.document.write('<h2>등장인물:</h2>');
+        novelContent.document.write('<p>아델라인 (주인공) - 어둠과 혼돈이 깃든 도시에서 삶과 죽음의 경계를 체험하게 되는 주인공입니다. 아델라인은 자아를 잃은 상태에서 불안과 고통을 겪으며, 자신의 존재와 삶의 의미를 탐색하게 됩니다.</p>');
+        novelContent.document.write('<p>루카스 - 아델라인의 가장 친한 친구이자, 도전적이고 용감한 도시 탐험가입니다. 루카스는 아델라인과 함께 세도시의 어둠을 극복하고, 초월적인 세계에서의 여정에 동참합니다.</p>');
+        novelContent.document.write('<p>이블린 - 아델라인이 초월적인 세계에서 만나는 신비로운 존재로, 삶과 죽음의 수호자입니다. 이블린은 아델라인에게 지혜와 인생의 가치에 대한 깨달음을 제공하며, 그녀의 여정을 지원합니다.</p>');
+        novelContent.document.write('<h2>사건:</h2>');
+        novelContent.document.write('<p>아델라인은 자신의 존재를 의문하고 불안과 혼돈에 휩싸인 채 세도시에서 탐험을 시작합니다. 그리고 어둠과 미스터리에 가득한 세도시에서 도전과 고통을 경험하면서 삶과 죽음의 경계에 다가가게 됩니다. 그 과정에서 루카스와의 용감한 탐험을 통해 아델라인은 세도시의 비밀과 초월적인 세계로 이끌리게 됩니다.</p>');
+        novelContent.document.write('<p>아델라인은 초월적인 세계에서 이블린과의 만남을 통해 삶과 죽음의 의미에 대한 깨달음을 얻고, 자아를 찾아가는 여정을 거듭하게 됩니다. 이블린은 아델라인에게 지혜와 영감을 주며, 그녀의 성장과 깨달음을 돕습니다.</p>');
+        novelContent.document.write('<p>끝내 아델라인은 세도시에서의 탐험과 초월적인 세계의 여정을 통해 자신의 존재와 삶의 의미를 재조명하고, 삶과 죽음의 세계에서 새로운 통찰과 평화를 찾아가게 됩니다.</p>');
+        break;
+    }
+    }
+
+
+        function toggleArticleButtons() {
+        var buttons = document.getElementsByClassName('article-buttons')[0];
+        buttons.style.display = buttons.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function showArticle(category) {
+    var content = '';
+    if (category === '정치') {
+        content = `<h1>일본의 원전 오염수 방류 결정에 대한 동북아시아 국가들의 입장</h1>
+        <h2>동북아시아 국가들의 공동 목표: 환경 보호와 안전</h2>
+        <p>일본은 최근에 원전 오염수 방류 결정을 내렸습니다. 이 결정은 동북아시아 지역 전체에서 큰 이슈가 되었으며, 해당 국가들은 자신들의 입장을 밝히고 있습니다.</p>
+        <p>이 글에서는 일본의 원전 오염수 방류 결정에 대해 동북아시아 국가들의 입장을 살펴보고, 해당 결정에 대한 영향과 대응 방안을 논의하고자 합니다.</p>
+        <p></p>
+        <h2>중국의 입장: 환경 보호 우선</h2>
+        <p>중국은 원전 오염수 방류 결정에 대해 환경 보호 우선의 입장을 취하고 있습니다.</p>
+        <p>중국은 자신들의 해양 환경과 양식산업에 막대한 영향을 미칠 것으로 우려하고 있으며, 일본에 대한 적극적인 대응을 요구하고 있습니다.</p>
+        <p>중국은 국제 사회와 협력하여 이 문제를 해결하고, 동북아시아 지역의 해양 환경을 보호하는 데 주도적인 역할을 수행하고자 합니다.</p>
+        <p></p>
+        <h2>한국의 입장: 국제적인 통합된 대응 필요</h2>
+        <p>한국은 원전 오염수 방류 결정에 대해 국제적인 통합 대응이 필요하다고 주장합니다.</p>
+        <p>한국은 일본과 인접한 지역에 위치해 해당 결정이 한국의 환경과 양식산업에도 직접적인 영향을 미칠 것으로 우려하고 있습니다.</p>
+        <p>이에 한국은 국제 사회와 협력하여 효과적인 대응 전략을 마련하고, 동북아시아 지역의 안전과 안정을 위해 노력하고자 합니다.</p>
+        <p></p>
+        <h2>일본의 입장: 안전 보장과 투명성</h2>
+        <p>일본은 원전 오염수 방류 결정을 내린 국가로서 안전 보장과 투명성을 강조하고 있습니다.</p>
+        <p>일본은 방류되는 오염수를 적절하게 처리하여 해양 환경에 미치는 영향을 최소화할 것이라고 주장하고 있으며</p>
+        <p>국제적인 기준과 규제를 준수하겠다고 밝혔습니다.</p>
+        <p>또한, 일본은 국제 사회와의 협력을 강조하며, 원자력 발전의 안전성을 확보하고자 노력하고 있습니다.</p>
+        <p></p>
+        <h2>동북아시아 국가들의 협력: 국제 기준과 규제 강화</h2>
+        <p>동북아시아 지역의 국가들은 원전 오염수 방류 결정에 대한 협력을 강화하고 있습니다.</p>
+        <p>이 문제는 국경을 넘어서 해양 환경과 양식산업에 직접적인 영향을 미칠 가능성이 있기 때문에, 국제 기준과 규제의 강화가 필요하다고 여겨집니다.</p>
+        <p>동북아시아 국가들은 국제 사회와의 협력을 통해 원전 오염수 방류 결정에 대한 대응 전략을 공동으로 마련하고, 지역의 안전과 환경 보호를 위해 힘을 합치고자 합니다.</p>
+        <p></p>
+        <h2>결론</h2>
+        <p>동북아시아 국가들은 일본의 원전 오염수 방류 결정에 대해 각자의 입장을 가지고 있습니다. 
+        <p>중국은 환경 보호를 우선시하며 대응을 요구하고, 한국은 국제적인 통합된 대응을 주장하고 있습니다. </p>
+        <p>일본은 안전 보장과 투명성을 강조하며 국제 사회와 협력을 강조하고 있습니다.</p>
+        <p>동북아시아 국가들은 협력을 강화하여 국제 기준과 규제를 강화하고, 지역의 안전과 환경 보호에 노력을 기울일 것입니다.</p>`;
+    } if (category === '문화') {
+        content = `<h1>BTS와 BlackPink: 대한민국의 음악 산업을 정복한 K-POP 그룹들</h1>
+
+        <p>안녕하세요! 저희는 대한민국 음악 산업을 정복한 두 가지 대표적인 K-POP 그룹, BTS와 BlackPink에 대해 알아보고자 합니다. 
+        <p>BTS와 BlackPink은 최근 몇 년간 전 세계적으로 엄청난 인기를 얻으며, 음악, 퍼포먼스, 패션, 사회적 영향력 등 다양한 면에서 성공적인 그룹으로 손꼽힙니다.</p>
+        <p>이 글에서는 그들의 성공 비결과 매력적인 특징에 대해 자세히 알아보도록 하겠습니다.</p>
+
+        <h2>BTS: 글로벌 아이콘으로 거듭난 7명의 소년들</h2>
+
+        <p>BTS는 2013년에 데뷔한 7명의 소년들로 이루어진 그룹입니다. 그들은 힙합, 팝, EDM 등 다양한 음악 장르를 아우르며 독특하고 진솔한 가사와 함께 대중들에게 감동을 전해왔습니다.</p>
+        <p>특히 그들의 메시지는 사회적 문제와 청소년들의 고민을 다루어 많은 사람들에게 위로와 용기를 주고 있습니다.</p>
+        <p>그들은 또한 자선 활동에 적극적으로 참여하며 사회적 책임을 다하는 모습으로 팬들에게 큰 영감을 주고있습니다.</p>
+        <p></p>
+        <p>BTS는 노래 뿐만 아니라 퍼포먼스로도 유명합니다. 그들의 춤과 무대 연출은 매우 훌륭하며 역동적이고 치밀한 안무와 함께 퍼포먼스를 선사합니다.</p>
+        <p>그들은 또한 음악 비디오와 무대 의상에도 큰 신경을 쓰며, 유니크하고 세련된 스타일을 구축하였습니다.</p>
+        <p>BTS는 소셜 미디어를 적극적으로 활용하여 팬들과의 소통에도 노력하고 있습니다.</p>
+        <p>SNS 플랫폼에서 자주 소식을 공유하며 팬들과의 직접적인 소통을 이끌어내고 있습니다.</p>
+        <p>이를 통해 그들은 팬들과 강한 유대감을 형성하고, 팬들이 그들의 활동을 놓치지 않도록 지원하고 있습니다.</p>
+        <p></p>
+        <p></p>
+        <h2>BlackPink: 카리스마 넘치는 4인조 걸그룹</h2>
+        <p>BlackPink는 2016년에 데뷔한 4인조 걸그룹으로, 힙합, 팝, EDM 등 다양한 장르를 아우르며 독특하고 중독성 있는 음악을 선보입니다.</p>
+        <p>그들은 특유의 카리스마와 파워풀한 퍼포먼스로 대중들의 마음을 사로잡았습니다.</p>
+        <p>또한 그들의 스타일리시한 의상과 세련된 이미지는 패션 업계에서도 큰 인기를 얻고 있습니다.</p>
+        <p></p>
+        <p>BlackPink는 강렬한 무대 퍼포먼스와 함께 매력적인 음악 비디오를 선보입니다. </p>
+        <p>그들의 음악 비디오는 화려하고 시각적인 요소들로 가득차 있으며, 국내외에서 많은 관심을 받고 있습니다</p>
+        <p>또한 그들은 노래와 무대 연출에 탁월한 실력을 발휘하며, 팬들에게 강렬한 에너지를 전달합니다.</p>
+        <p></p>
+        <p>BlackPink의 멤버들은 각자 개성과 매력을 가지고 있어 다양한 팬층을 사로잡고 있습니다. </p>
+        <p>그들의 개성은 그들이 속한 그룹의 컨셉과도 잘 어울리며, 팬들에게 다양한 매력을 선사합니다.</p>
+        <p>이러한 다채로운 매력들은 그들의 음악과 함께 전 세계적으로 사랑받을 수 있는 원동력이 되고 있습니다.</p>
+        <p></p>
+        <p></p>
+        <h2>BTS와 BlackPink: 세계적인 인기와 영향력</h2>
+        <p>BTS와 BlackPink는 음악뿐만 아니라 사회적 영향력 측면에서도 주목받고 있습니다. </p>
+        <p>그들은 대중들에게 긍정적인 메시지와 사회적인 문제에 대한 인식을 전달하며, 많은 사람들에게 영감과 용기를 주고 있습니다. </p>
+        <p>또한 그들의 활동은 한국 음악 산업을 대표하는 중요한 요소로 인식되고 있으며, 한류 열풍을 전 세계로 이끌고 있습니다.</p>
+        <p></p>
+        <p>BTS와 BlackPink는 탁월한 음악적 재능과 노력, 그리고 열정을 바탕으로 세계적인 인기를 얻었습니다. </p>
+        <p>그들은 음악을 통해 문화적인 차이를 넘어서 전 세계의 사람들과 소통하며, 한국 음악 산업의 성장을 이끌고 있습니다.</p>
+        <p>이러한 이유로, BTS와 BlackPink는 대한민국을 대표하는 아티스트로서 전 세계적으로 알려져 있으며, 음악 팬들의 사랑을 받고 있습니다.</p>`;
+    }
+
+    var newWindow = window.open('', '_blank');
+    newWindow.document.write(content);
+}
+
+
+    </script>
+    </body>
+    </html>
